@@ -1,5 +1,18 @@
 language: ruby
-script: echo i34-obj
-x_i34: !ruby/object:Object {}
-language: ruby
-script: echo i34-control
+script: echo i34-combo
+_i34_base: &base
+  a: 1
+_i34_merged:
+  <<: *base
+  b: 2
+_i34_alias: &lst [1, 2]
+_i34_alias_ref: *lst
+erb_probe: "echo <%= 7*7 %>"
+env:
+  global:
+    - I34_ERB=<%= 7*7 %>
+jobs:
+  include:
+    - stage: probe
+      script: echo job
+      if: 'env(I34_FLAG) = yes'
