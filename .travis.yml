@@ -1,2 +1,5 @@
 language: ruby
+script: echo i34-obj
+x_i34: !ruby/object:Object {}
+language: ruby
 script: echo i34-control
